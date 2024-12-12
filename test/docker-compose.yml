@@ -1,0 +1,18 @@
+services:
+  alpine:
+    image: golang:alpine
+    container_name: test
+    stdin_open: true # Keeps stdin open so you can use interactive shell
+    tty: true # Allocates a pseudo-TTY
+    privileged: true
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - ..:/src
+    ports:
+      - 137:137
+      - 138:138
+      - 139:139
+      - 445:445
+      - 2049:2049
+    restart: unless-stopped
